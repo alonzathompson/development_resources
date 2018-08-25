@@ -1,0 +1,18 @@
+Insert this in lifecycle methods componentDidMount and componentDidUpdate
+      //this.state.vid.currentTime = Math.round((window.scrollY / 24)  % this.state.vid.duration);
+    }
+    
+    // video Background
+    /*addVid() {
+      this.state.vid.src = this.state.vidSrc;
+      this.state.vid.type = this.state.vidType;
+      this.state.vid.style.zIndex = 6;
+      //this.state.vid.playbackRate = 1.24;
+      
+      document.body.appendChild(this.state.vid);
+      this.state.vid.className = 'videoPlayer';
+    }*/
+    
+    /*scrollVid() {
+      return this.state.vid.currentTime = Math.round((window.scrollY / 24)  % this.state.vid.duration);
+    }*/

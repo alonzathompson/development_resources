@@ -1,0 +1,23 @@
+
+ button { font-size: 20px; }
+
+.grid {
+  width: 125px;
+  background: #DDD;
+  height: 125px;
+  float: left;
+  margin-right: 20px;
+}
+
+.grid-item {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px 5px 0;
+  background: #09F;
+  float: left;
+  transition: transform 0.4s;
+}
+
+.grid-item.is-moved {
+  transform: translateX(145px);
+}

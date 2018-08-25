@@ -1,0 +1,73 @@
+-------------------------
+PPIVATE VARIABLES IN JS	 |
+
+var accessor = (function() {
+	// Create the private var
+	var privateVar = "You Can't See Me, ";
+	
+	// Some other functionality here that periodically changes privateVar, because it has access to it
+	// [ more code here ]
+	
+	// Return the accessor
+	return function(name) {
+		return privateVar + name;
+	};
+})();
+
+// Use!
+// currentValue = accessor("David");  "You Can't See Me, David"
+
+
+//METHOD BELOW PREVENTS USER FRO OVERRIDING VARIABLES
+var accessor = (function() {
+	
+	var permissions = {};
+	
+	function handleResult(perm) {
+		// Do something with the result
+	}
+	
+	return function(permissionToCheck, callback) {
+		if(permissions[permissionToCheck]) != undefined) {
+			callback(permissions[permissionToCheck]);
+		}
+		else {
+			$.post({
+				url: "/permissions"
+				data: {
+					perm: permissionToCheck
+				}
+			}).success(function(res) {
+				callback(handleResult(res));
+			});
+		}
+	};
+	
+})();
+
+//Pub Sub
+let events = {
+	events: {},
+	on: (name, cb) => {
+		this.events[name] = this.events[name] || [];
+		this.events[name].push(cb)
+ 	},
+	off: (name, cb) => {
+		if(this.events[name]){
+			for(let i = 0; i < this.events[name].length; i++){
+				if(this.events[name][i] === cb){
+					this.events[name].splice(i, 1);
+					break;
+				}
+			}
+		}
+	},
+	emit: (name, data) => {
+		if(this.events[name]){
+			this.events[name].forEach((cb) => {
+				cb(data);
+			})
+		}
+	}
+}
+
